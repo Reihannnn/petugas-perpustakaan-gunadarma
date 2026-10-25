@@ -25,7 +25,7 @@ export default async function ProfilPetugas({ params }: PageProps<"/[slug]">) {
   return (
     <div className="min-h-full bg-white font-sans">
       <header className="bg-primary text-white">
-        <div className="mx-auto max-w-3xl px-5 py-8 sm:px-8">
+        <div className="mx-auto max-w-3xl px-5 pt-2 pb-10 sm:px-8">
           <div className="flex items-center justify-between gap-4">
             <Link
               href="/"
@@ -34,11 +34,11 @@ export default async function ProfilPetugas({ params }: PageProps<"/[slug]">) {
               ← Kembali ke daftar petugas
             </Link>
             <Image
-              src="/images/guandarma-logo.webp"
+              src="/images/guandarma-logo.png"
               alt="Logo Universitas Gunadarma"
-              width={40}
-              height={40}
-              className="h-10 w-auto shrink-0 rounded-md bg-white p-0.5"
+              width={100}
+              height={100}
+              className="h-18 w-auto shrink-0 rounded-md p-0.5"
             />
           </div>
           <div className="mt-6 flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">

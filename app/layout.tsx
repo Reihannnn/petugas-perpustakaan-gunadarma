@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Petugas Perpustakaan — Universitas Gunadarma",
   description: "Daftar petugas Perpustakaan Universitas Gunadarma",
-  icons: { icon: "/images/guandarma-logo.webp" },
+  icons: { icon: "/images/guandarma-logo.png" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

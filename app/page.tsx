@@ -6,13 +6,13 @@ export default function Home() {
   return (
     <div className="min-h-full bg-white font-sans">
       <header className="bg-primary text-white">
-        <div className="mx-auto flex max-w-6xl items-center gap-4 px-5 py-8 sm:px-8">
+        <div className="mx-auto flex max-w-6xl items-center gap-4 px-5 py-2 sm:px-8">
           <Image
-            src="/images/guandarma-logo.webp"
+            src="/images/guandarma-logo.png"
             alt="Logo Universitas Gunadarma"
-            width={56}
-            height={56}
-            className="h-14 w-auto shrink-0 rounded-lg bg-white p-1"
+            width={100}
+            height={100}
+            className="h-32 w-auto shrink-0 bg-primary rounded-lg p-1"
           />
           <div>
             <p className="text-xs font-semibold tracking-widest uppercase opacity-80">

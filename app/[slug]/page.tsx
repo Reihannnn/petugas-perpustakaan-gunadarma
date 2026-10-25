@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { petugas, getPetugas, inisial } from "../data";
 
 export function generateStaticParams() {
@@ -17,7 +18,22 @@ export async function generateMetadata({
   return { title: `${p.nama} — Petugas Perpustakaan Gunadarma` };
 }
 
-export default async function ProfilPetugas({ params }: PageProps<"/[slug]">) {
+// ponytail: params adalah runtime data — dibungkus Suspense agar navigasi tetap instant (Cache Components)
+export default function ProfilPetugas({ params }: PageProps<"/[slug]">) {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-full items-center justify-center bg-white font-sans text-sm text-zinc-500">
+          Memuat profil petugas…
+        </div>
+      }
+    >
+      <Detail params={params} />
+    </Suspense>
+  );
+}
+
+async function Detail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const p = getPetugas(slug);
   if (!p) notFound();
@@ -47,7 +63,7 @@ export default async function ProfilPetugas({ params }: PageProps<"/[slug]">) {
             </div>
             <div>
               <p className="text-xs font-semibold tracking-widest uppercase opacity-80">
-                Petugas Perpustakaan
+                Petugas Perpustakaan J1
               </p>
               <h1 className="mt-1 text-2xl font-bold sm:text-3xl">{p.nama}</h1>
               <p className="text-sm opacity-80">Universitas Gunadarma</p>
@@ -57,7 +73,7 @@ export default async function ProfilPetugas({ params }: PageProps<"/[slug]">) {
       </header>
 
       <main className="mx-auto max-w-3xl px-5 py-8 sm:px-8">
-        <div className="overflow-hidden rounded-2xl border border-zinc-200 shadow-sm">
+        <div className="overflow-hidden rounded-lg border border-zinc-200 shadow-sm">
           {[
             { label: "Nama Lengkap", nilai: p.nama },
             { label: "Email", nilai: p.email, href: `mailto:${p.email}` },
@@ -78,9 +94,9 @@ export default async function ProfilPetugas({ params }: PageProps<"/[slug]">) {
               {row.href ? (
                 <a
                   href={row.href}
-                  className="font-medium text-primary hover:underline"
+                  className="font-medium text-primary  hover:underline"
                 >
-                  {row.nilai}
+                  {row.nilai} 
                 </a>
               ) : (
                 <span className="font-medium text-zinc-900">{row.nilai}</span>

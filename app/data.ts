@@ -1,48 +1,75 @@
 // ponytail: data placeholder, ganti langsung di array ini kalau data asli sudah ada
-export const petugas = [
+const daftarPetugas = [
   {
-    // ponytail: slug wajib tanpa spasi (pakai dash) — spasi bikin URL %20 dan tidak match
-    slug: "reihan-achmad-susilo",
     nama: "Reihan Achmad Susilo",
-    email: "reihan@gunadarma.ac.id",
-    telepon: "0812-3456-7890",
+    email: "reihanachmadsusilo@student.gunadarma.ac.id",
+    telepon: "0895-3831-16665",
   },
   {
-    slug: "bagas pramudya",
-    nama: "Bagas Nugroho",
-    email: "bagas@gunadarma.ac.id",
-    telepon: "0813-3456-7891",
+    nama: "Bagas Pramudya",
+    email: "bagaspramudya@student.gunadarma.ac.id",
+    telepon: "0852-8170-1342",
   },
   {
-    slug: "Muhammad Afriza Maulana",
     nama: "Muhammad Afriza Maulana",
-    email: "",
-    telepon: "0815-3456-7892",
+    email: "muhammadafrizamaulana@student.gunadarma.ac.id",
+    telepon: "0857-8115-5552",
   },
   {
-    slug: "Reni Febrianti",
     nama: "Reni Febrianti",
-    email: "andi.wijaya@gunadarma.ac.id",
-    telepon: "0821-3456-7893",
+    email: "renifebrianti@student.gunadarma.ac.id",
+    telepon: "0838-0427-7617",
   },
   {
-    slug: "Nanda Tazkia Zahra",
     nama: "Nanda Tazkia Zahra",
-    email: "dewi.lestari@gunadarma.ac.id",
-    telepon: "0857-3456-7894",
+    email: "nandatazkiazahra@student.gunadarma.ac.id",
+    telepon: "0857-8284-9370",
   },
   {
-    slug: "Muzdalifah Aliah",
-    nama: "Budi Santoso",
-    email: "budi.santoso@gunadarma.ac.id",
+    nama: "Muzdalifah Aliah",
+    email: "muzdalifahaliah@student.gunadarma.ac.id",
+    telepon: "0857-8888-5779",
+  },
+  {
+    nama: "Hanum Adya Sekar Pertiwi",
+    email: "hanumadyasekarpertiwi@student.gunadarma.ac.id",
+    telepon: "0855-8874-633",
+  },
+  {
+    nama: "Dio Andima",
+    email: "dioandima@student.gunadarma.ac.id",
+    telepon: "0895-1270-6241",
+  },
+  {
+    nama: "Achmad Zaenuddin Dani",
+    email: "achmadzaenuddindani@student.gunadarma.ac.id",
     telepon: "0878-3456-7895",
   },
+  {
+    nama: "Nadiya",
+    email: "nadiya@student.gunadarma.ac.id",
+    telepon: "0851-5771-4896",
+  },
 ];
+
+// ponytail: slug otomatis dari nama — spasi jadi dash, huruf kecil, tanpa field slug manual
+export function slugify(nama: string) {
+  return nama
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export const petugas = daftarPetugas.map((p) => ({
+  ...p,
+  slug: slugify(p.nama),
+}));
 
 export type Petugas = (typeof petugas)[number];
 
 export const getPetugas = (slug: string) =>
-  petugas.find((p) => p.slug === slug);
+  petugas.find((p) => p.slug === slugify(slug));
 
 export function inisial(nama: string) {
   return nama

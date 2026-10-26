@@ -15,7 +15,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const p = getPetugas(slug);
   if (!p) return { title: "Petugas tidak ditemukan" };
-  return { title: `${p.nama} — Petugas Perpustakaan Gunadarma` };
+  return { title: `${p.nama} — Petugas Perpustakaan Gunadarma J1` };
 }
 
 // ponytail: params adalah runtime data — dibungkus Suspense agar navigasi tetap instant (Cache Components)
@@ -63,7 +63,7 @@ async function Detail({ params }: { params: Promise<{ slug: string }> }) {
             </div>
             <div>
               <p className="text-xs font-semibold tracking-widest uppercase opacity-80">
-                Petugas Perpustakaan J1
+                Petugas Perpustakaan J1 Kalimalang
               </p>
               <h1 className="mt-1 text-2xl font-bold sm:text-3xl">{p.nama}</h1>
               <p className="text-sm opacity-80">Universitas Gunadarma</p>
@@ -107,7 +107,7 @@ async function Detail({ params }: { params: Promise<{ slug: string }> }) {
       </main>
 
       <footer className="border-t border-zinc-100 py-6 text-center text-xs text-zinc-400">
-        Perpustakaan Universitas Gunadarma
+        Perpustakaan Universitas Gunadarma J1 - 2026
       </footer>
     </div>
   );

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Petugas Perpustakaan — Universitas Gunadarma",
-  description: "Daftar petugas Perpustakaan Universitas Gunadarma",
+  title: "Petugas Perpustakaan J1 — Universitas Gunadarma",
+  description: "Daftar petugas Perpustakaan Universitas Gunadarma j1 Kalimalang",
   icons: { icon: "/images/guandarma-logo.png" },
 };
 
